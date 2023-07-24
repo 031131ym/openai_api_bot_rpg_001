@@ -70,7 +70,7 @@ def communicate():
 # ユーザーインターフェイスの構築
 st.title(" 対話型ゲーム")
 st.image("05_rpg.png")
-st.write("中世風RPGです。行動回数が0になる前に魔王を倒してください。")
+st.write("中世風RPGです。行動回数が0になる前に魔王を倒してください。行動回数は最大5回です。")
 
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
