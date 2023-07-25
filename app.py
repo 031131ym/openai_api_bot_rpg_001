@@ -35,8 +35,8 @@ system_prompt = """
 　・「勇者の行動」をするたびに、「残り行動回数」が1回減る。初期値は5。
 　・以下の「勇者の行動」は絶対に無効とし、「残り行動回数」が1回減り「ストーリー」を進行する。
 　　・現状の勇者では難しいこと
-　　・初期段階で「最強」「最高」といったフレーズが含まれること
-　　・レベルが上がっていないのに魔王に挑むこと
+　　・行動回数が3回までに「最強」「最高」といったフレーズが含まれた行動を行うこと
+　　・レベル上げの行動を行わずに魔王に挑むこと
 　　・ストーリーに反すること
 　　・時間経過すること
 　　・行動に結果を付与すること
@@ -64,7 +64,8 @@ def communicate():
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
-        messages=messages
+        messages=messages,
+        temperature = 0
     )  
 
     bot_message = response["choices"][0]["message"]
